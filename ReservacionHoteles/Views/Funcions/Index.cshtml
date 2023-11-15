@@ -1,0 +1,84 @@
+﻿@model IEnumerable<ReservacionHoteles.Models.Funcion>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <div class="row">
+        <div class="col-sm">
+            <a asp-action="Create" class="btn btn-primary">Gestionar Reserva</a>
+        </div>
+    </div>
+</p>
+<form asp-action="Index" method="get">
+    <div class="row">
+        <div class="col">
+            <label class="control-label">Hotel:</label>
+            <select name="HotelRefId" class="form-control" asp-items="ViewBag.HotelRefId">
+                <option value="">Seleccione una hotel</option>
+            </select>
+        </div>
+        <div class="col">
+            <label class="control-label">Habitaciones:</label>
+            <select name="HabitacionesRefId" class="form-control" asp-items="ViewBag.HabitacionesRefId">
+                <option value="">Seleccione un habitacion</option>
+            </select>
+        </div>
+        <div class="col">
+            <br />
+            <input type="submit" value="Buscar" id="submit" class="btn btn-warning" />
+        </div>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+           
+          
+            <th>
+                @Html.DisplayNameFor(model => model.Hotel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Destinos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Habitaciones)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaRegistro)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaHoraEntrada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaHoraSalida)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Hotel.Nombre) - @Html.DisplayFor(modelItem => item.Hotel.Destinos)
+            </td>
+        
+            <td>
+                    @Html.DisplayFor(modelItem => item.Habitaciones.Id) - @Html.DisplayFor(modelItem => item.Habitaciones.NumHabitaciones)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaRegistro)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
