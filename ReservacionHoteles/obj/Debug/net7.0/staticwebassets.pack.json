@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\Archivos\\ListaDePrecio.xlsx"
     },
     {
+      "Id": "C:\\Users\\elian\\source\\repos\\ReservacionHoteles\\ReservacionHoteles\\wwwroot\\Imagenes\\Edificios.jpg",
+      "PackagePath": "staticwebassets\\Imagenes\\Edificios.jpg"
+    },
+    {
       "Id": "C:\\Users\\elian\\source\\repos\\ReservacionHoteles\\ReservacionHoteles\\wwwroot\\Imagenes\\Habitacion1.jpg",
       "PackagePath": "staticwebassets\\Imagenes\\Habitacion1.jpg"
     },
@@ -23,6 +27,10 @@
     {
       "Id": "C:\\Users\\elian\\source\\repos\\ReservacionHoteles\\ReservacionHoteles\\wwwroot\\Imagenes\\Habitación3.jpg",
       "PackagePath": "staticwebassets\\Imagenes\\Habitación3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\elian\\source\\repos\\ReservacionHoteles\\ReservacionHoteles\\wwwroot\\Imagenes\\hotel.jpg",
+      "PackagePath": "staticwebassets\\Imagenes\\hotel.jpg"
     },
     {
       "Id": "C:\\Users\\elian\\source\\repos\\ReservacionHoteles\\ReservacionHoteles\\wwwroot\\css\\site.css",

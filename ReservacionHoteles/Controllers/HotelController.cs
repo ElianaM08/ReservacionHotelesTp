@@ -25,9 +25,9 @@ namespace ReservacionHoteles.Controllers
         // GET: Hotel
         public async Task<IActionResult> Index()
         {
-              return _context.Hotel != null ? 
-                          View(await _context.Hotel.ToListAsync()) :
-                          Problem("Entity set 'ReservacionHotelesContext.Hotel'  is null.");
+            return _context.Hotel != null ?
+                        View(await _context.Hotel.ToListAsync()) :
+                        Problem("Entity set 'ReservacionHotelesContext.Hotel'  is null.");
         }
 
         // GET: Hotel/Details/5
@@ -83,12 +83,12 @@ namespace ReservacionHoteles.Controllers
 
 
                 };
-                 _context.Add(hotel);
+                _context.Add(hotel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
 
             }
-          
+
 
             ViewData["DestinosRefId"] = new SelectList(_context.Destinos, "Id", "Descripcion", model.DestinosRefId);
             ViewData["TipoRefId"] = new SelectList(_context.Tipo, "Id", "Descripcion", model.TipoRefId);
@@ -113,48 +113,52 @@ namespace ReservacionHoteles.Controllers
         }
 
         // GET: Hotel/Edit/5
-        //public async Task<IActionResult> Edit(int? id)
-        //{
+        public async Task<IActionResult> Edit(int? id)
+        {
 
-        //    if (id == null || _context.Hotel == null)
-        //    {
-        //        return NotFound();
-        //    }
+            if (id == null || _context.Hotel == null)
+            {
+                return NotFound();
+            }
 
-        //    var pelicula = await _context.Hotel.FindAsync(id);
-
-            
-            
-        //        //HotelViewModels hotelViewModel = new HotelViewModels()
-        //        //{
-        //        //    Nombre = Hotel.Nombre,
-                    
-        //        //    Calificacion = hotel.Calificacion,
-        //        //    Descripcion = hotel.Descripcion,
-        //        //    FechaEntrada = hotel.FechaEntrada,
-        //        //    FechaSalida = Hotel.FechaSalida,
-        //        //    FechaRegistro = hotel.FechaRegistro,
-        //        //    DestinosRefId = hotel.DestinosRefId,
-        //        //    TipoRefId = hotel.TipoRefId,
-
-
-        //        //};
-        //        //_context.Add(hotelViewModel);
-        //        //await _context.SaveChangesAsync();
-        //        //return RedirectToAction(nameof(Index));
+            var hotel = await _context.Hotel.FindAsync(id);
 
 
 
-        //}
+            HotelViewModels hotelViewModel = new HotelViewModels()
+            {
+                Nombre = hotel.Nombre,
+                Calificacion = hotel.Calificacion,
+                Descripcion = hotel.Descripcion,
+                FechaEntrada = hotel.FechaEntrada,
+                FechaSalida = hotel.FechaSalida,
+                FechaRegistro = hotel.FechaRegistro,
+                DestinosRefId = hotel.DestinosRefId,
+                TipoRefId = hotel.TipoRefId,
+
+
+            };
+            if( hotel == null)
+            {
+                return NotFound();
+            }
+            ViewData["DestinosRefId"] = new SelectList(_context.Destinos, "Id", "Descripcion", hotel.DestinosRefId);
+            ViewData["TipoRefId"] = new SelectList(_context.Tipo, "Id", "Descripcion", hotel.TipoRefId);
+            return View(hotelViewModel);
+        }
+
+    
+        
 
         // POST: Hotel/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Descripcion,ImagemHotel,Destino,Clasificacion,FechaEntrada,FechaSalida")] Hotel hotel)
+        public async Task<IActionResult> Edit(int id, HotelViewModels model)
         {
-            if (id != hotel.Id)
+            string uniqueFileName = UploadedFile(model);
+            if (id != model.Id)
             {
                 return NotFound();
             }
@@ -163,12 +167,22 @@ namespace ReservacionHoteles.Controllers
             {
                 try
                 {
+                    var hotel = await _context.Hotel.FindAsync(id);
+
+                    hotel.Nombre = model.Nombre;
+                    hotel.Calificacion = model.Calificacion;
+                    hotel.Descripcion = model.Descripcion;
+                    hotel.FechaEntrada = model.FechaEntrada;
+                    hotel.FechaSalida = model.FechaSalida;
+                    hotel.FechaRegistro = model.FechaRegistro;
+                    hotel.DestinosRefId = model.DestinosRefId;
+                    hotel.TipoRefId = model.TipoRefId;
                     _context.Update(hotel);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!HotelExists(hotel.Id))
+                    if (!HotelExists(model.Id))
                     {
                         return NotFound();
                     }
@@ -179,7 +193,9 @@ namespace ReservacionHoteles.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(hotel);
+            ViewData["DestinosRefId"] = new SelectList(_context.Destinos, "Id", "Descripcion", model.DestinosRefId);
+            ViewData["TipoRefId"] = new SelectList(_context.Tipo, "Id", "Descripcion", model.TipoRefId);
+            return View(model);
         }
 
         // GET: Hotel/Delete/5

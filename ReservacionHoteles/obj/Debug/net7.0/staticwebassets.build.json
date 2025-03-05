@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "d+cnUtEheBq2ubgldeIMoZDPDQAcchYWAZAl0m8MzXQ=",
+  "Hash": "GhkQe8XFbZ0X2Z6+gnCzbhY4CULtxXP9adhDTA++xDE=",
   "Source": "ReservacionHoteles",
   "BasePath": "_content/ReservacionHoteles",
   "Mode": "Default",
@@ -102,6 +102,23 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
+      "Identity": "C:\\Users\\elian\\source\\repos\\ReservacionHoteles\\ReservacionHoteles\\wwwroot\\Imagenes\\Edificios.jpg",
+      "SourceId": "ReservacionHoteles",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\elian\\source\\repos\\ReservacionHoteles\\ReservacionHoteles\\wwwroot\\",
+      "BasePath": "_content/ReservacionHoteles",
+      "RelativePath": "Imagenes/Edificios.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Imagenes\\Edificios.jpg"
+    },
+    {
       "Identity": "C:\\Users\\elian\\source\\repos\\ReservacionHoteles\\ReservacionHoteles\\wwwroot\\Imagenes\\Habitacion1.jpg",
       "SourceId": "ReservacionHoteles",
       "SourceType": "Discovered",
@@ -168,6 +185,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Imagenes\\Habitacion4.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\elian\\source\\repos\\ReservacionHoteles\\ReservacionHoteles\\wwwroot\\Imagenes\\hotel.jpg",
+      "SourceId": "ReservacionHoteles",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\elian\\source\\repos\\ReservacionHoteles\\ReservacionHoteles\\wwwroot\\",
+      "BasePath": "_content/ReservacionHoteles",
+      "RelativePath": "Imagenes/hotel.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Imagenes\\hotel.jpg"
     },
     {
       "Identity": "C:\\Users\\elian\\source\\repos\\ReservacionHoteles\\ReservacionHoteles\\wwwroot\\js\\site.js",

@@ -1,0 +1,27 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Dashboard";
+    ViewData["HideNav"] = false; // Mostrar el nav
+}
+
+<h1>Bienvenido al Panel de Control</h1>
+<p>Aquí puedes gestionar las reservas, finanzas y más.</p>
+
+<style>
+    .content {
+        padding: 20px;
+    }
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: url('@Url.Content("~/imagenes/Edificios.jpg")') no-repeat center center/cover;
+        text-align: center;
+        color: white;
+    }
+    
+</style>
+

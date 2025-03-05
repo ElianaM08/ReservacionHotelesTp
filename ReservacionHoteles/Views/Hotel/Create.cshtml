@@ -6,7 +6,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Crear Nuevo Registro</h1>
 
 <h4>Hotel</h4>
 <hr />
@@ -27,7 +27,7 @@
             <div class="form-group">
                 <label asp-for="ImagemHotel" class="control-label"></label>
                 <div class="custom-file">
-                    <input asp-for="ImagemHotel"  class="custom-file-input" id="customFile">
+                    <input asp-for="ImagemHotel" src="~/Imagenes/" class="custom-file-input" id="customFile">
                    
                     <label class="custom-file-label" for="customFile">Seleccione el archivo</label>
                 </div>
@@ -53,23 +53,54 @@
                 <span asp-validation-for="FechaSalida" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Crear" class="btn btn-create" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-back">Volver</a>
 </div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script type="text/javascript">
-        // Add the following code if you want the name of the file appear on select
+       
         $(".custom-file-input").on("change", function () {
             var fileName = $(this).val().split("\\").pop();
             $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
         });
     </script>
 }
+<style>
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 5px;
+        font-size: 1rem;
+        font-weight: bold;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        color: white;
+        transition: background 0.3s ease;
+    }
+
+    .btn-create {
+        background-color: cornflowerblue;
+    }
+
+        .btn-create:hover {
+            background-color: cornflowerblue;
+        }
+
+    .btn-back {
+        background-color: darksalmon;
+    }
+
+        .btn-back:hover {
+            background-color: burlywood;
+        }
+</style>

@@ -1,7 +1,73 @@
-﻿﻿<div class="text-center">
+﻿@*﻿<div class="text-center">
     <h1 class="display-4">
         Resevacion de Hoteles
-        
     </h1>
+    <img src="~/Imagenes/Edificios.jpg"> <img />
+</div>*@
+@{
+    ViewData["Title"] = "E-Management";
+    ViewData["HideNav"] = true; // Oculta el nav para esta vista
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Management</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
 
-</div>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('@Url.Content("~/imagenes/Edificios.jpg")') no-repeat center center/cover;
+            text-align: center;
+            color: white;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        h1 {
+            font-size: 4rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn {
+            padding: 12px 30px;
+            font-size: 1.2rem;
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+            .btn:hover {
+                background: white;
+                color: #333;
+            }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>E-Management</h1>
+        <a href="@Url.Action("Dashboard", "Home")" class="btn">Ingresar</a>
+    </div>
+
+</body>
+</html>
+
