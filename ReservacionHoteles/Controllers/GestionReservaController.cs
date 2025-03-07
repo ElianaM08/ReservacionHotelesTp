@@ -22,7 +22,7 @@ namespace ReservacionHoteles.Controllers
         // GET: GestionReserva
         public async Task<IActionResult> Index()
         {
-            var reservacionHotelesContext = _context.GestionReservas.Include(g => g.Destinos).Include(g => g.Habitaciones).Include(g => g.Hotel).Include(g => g.Tarifa1).Include(g => g.Tarifa2).Include(g => g.Tarifa3).Include(g => g.Tarifa4).Include(g => g.Tarifa5).Include(g => g.Tarifa6);
+            var reservacionHotelesContext = _context.GestionReservas.Include(g => g.Destinos).Include(g => g.Habitaciones).Include(g => g.Hotel).Include(g => g.Tarifa1);
             return View(await reservacionHotelesContext.ToListAsync());
         }
 
@@ -39,11 +39,11 @@ namespace ReservacionHoteles.Controllers
                 .Include(g => g.Habitaciones)
                 .Include(g => g.Hotel)
                 .Include(g => g.Tarifa1)
-                .Include(g => g.Tarifa2)
-                .Include(g => g.Tarifa3)
-                .Include(g => g.Tarifa4)
-                .Include(g => g.Tarifa5)
-                .Include(g => g.Tarifa6)
+                //.Include(g => g.Tarifa2)
+                //.Include(g => g.Tarifa3)
+                //.Include(g => g.Tarifa4)
+                //.Include(g => g.Tarifa5)
+                //.Include(g => g.Tarifa6)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (gestionReserva == null)
             {
@@ -60,11 +60,11 @@ namespace ReservacionHoteles.Controllers
             ViewData["HabitacionesRefId"] = new SelectList(_context.Habitaciones, "Id", "NumeroHabitaciones");
             ViewData["HotelRefId"] = new SelectList(_context.Hotel, "Id", "Nombre");
             ViewData["Tarifa1RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion");
-            ViewData["Tarifa2RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion");
-            ViewData["Tarifa3RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion");
-            ViewData["Tarifa4RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion");
-            ViewData["Tarifa5RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion");
-            ViewData["Tarifa6RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion");
+            //ViewData["Tarifa2RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion");
+            //ViewData["Tarifa3RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion");
+            //ViewData["Tarifa4RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion");
+            //ViewData["Tarifa5RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion");
+            //ViewData["Tarifa6RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion");
             return View();
         }
 
@@ -73,7 +73,7 @@ namespace ReservacionHoteles.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FechaHoraEntrada,FechaHoraSalida,HotelRefId,DestinosRefId,HabitacionesRefId,Tarifa1RefId,Tarifa2RefId,Tarifa3RefId,Tarifa4RefId,Tarifa5RefId,Tarifa6RefId,FechaRegistro")] GestionReserva gestionReserva)
+        public async Task<IActionResult> Create([Bind("Id,FechaHoraEntrada,FechaHoraSalida,HotelRefId,DestinosRefId,HabitacionesRefId,Tarifa1RefId,FechaRegistro")] GestionReserva gestionReserva)
         {
             if (ModelState.IsValid)
             {
@@ -85,11 +85,11 @@ namespace ReservacionHoteles.Controllers
             ViewData["HabitacionesRefId"] = new SelectList(_context.Habitaciones, "Id", "NumeroHabitaciones", gestionReserva.DestinosRefId);
             ViewData["HotelRefId"] = new SelectList(_context.Hotel, "Id", "Nombre", gestionReserva.HotelRefId);
             ViewData["Tarifa1RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa1RefId);
-            ViewData["Tarifa2RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa2RefId);
-            ViewData["Tarifa3RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa3RefId);
-            ViewData["Tarifa4RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa4RefId);
-            ViewData["Tarifa5RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa5RefId);
-            ViewData["Tarifa6RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa6RefId);
+            //ViewData["Tarifa2RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa2RefId);
+            //ViewData["Tarifa3RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa3RefId);
+            //ViewData["Tarifa4RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa4RefId);
+            //ViewData["Tarifa5RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa5RefId);
+            //ViewData["Tarifa6RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa6RefId);
             return View(gestionReserva);
         }
 
@@ -110,11 +110,11 @@ namespace ReservacionHoteles.Controllers
             ViewData["HabitacionesRefId"] = new SelectList(_context.Habitaciones, "Id", "NumeroHabitaciones", gestionReserva.DestinosRefId);
             ViewData["HotelRefId"] = new SelectList(_context.Hotel, "Id", "Nombre", gestionReserva.HotelRefId);
             ViewData["Tarifa1RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa1RefId);
-            ViewData["Tarifa2RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa2RefId);
-            ViewData["Tarifa3RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa3RefId);
-            ViewData["Tarifa4RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa4RefId);
-            ViewData["Tarifa5RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa5RefId);
-            ViewData["Tarifa6RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa6RefId);
+            //ViewData["Tarifa2RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa2RefId);
+            //ViewData["Tarifa3RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa3RefId);
+            //ViewData["Tarifa4RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa4RefId);
+            //ViewData["Tarifa5RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa5RefId);
+            //ViewData["Tarifa6RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa6RefId);
             return View(gestionReserva);
         }
 
@@ -123,7 +123,7 @@ namespace ReservacionHoteles.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FechaHoraEntrada,FechaHoraSalida,HotelRefId,DestinosRefId,HabitacionesRefId,Tarifa1RefId,Tarifa2RefId,Tarifa3RefId,Tarifa4RefId,Tarifa5RefId,Tarifa6RefId,FechaRegistro")] GestionReserva gestionReserva)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FechaHoraEntrada,FechaHoraSalida,HotelRefId,DestinosRefId,HabitacionesRefId,Tarifa1RefId,FechaRegistro")] GestionReserva gestionReserva)
         {
             if (id != gestionReserva.Id)
             {
@@ -154,11 +154,11 @@ namespace ReservacionHoteles.Controllers
             ViewData["HabitacionesRefId"] = new SelectList(_context.Habitaciones, "Id", "NumeroHabitaciones", gestionReserva.DestinosRefId);
             ViewData["HotelRefId"] = new SelectList(_context.Hotel, "Id", "Nombre", gestionReserva.HotelRefId);
             ViewData["Tarifa1RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa1RefId);
-            ViewData["Tarifa2RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa2RefId);
-            ViewData["Tarifa3RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa3RefId);
-            ViewData["Tarifa4RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa4RefId);
-            ViewData["Tarifa5RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa5RefId);
-            ViewData["Tarifa6RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa6RefId);
+            //ViewData["Tarifa2RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa2RefId);
+            //ViewData["Tarifa3RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa3RefId);
+            //ViewData["Tarifa4RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa4RefId);
+            //ViewData["Tarifa5RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa5RefId);
+            //ViewData["Tarifa6RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa6RefId);
             return View(gestionReserva);
         }
 
@@ -175,11 +175,11 @@ namespace ReservacionHoteles.Controllers
                 .Include(g => g.Habitaciones)
                 .Include(g => g.Hotel)
                 .Include(g => g.Tarifa1)
-                .Include(g => g.Tarifa2)
-                .Include(g => g.Tarifa3)
-                .Include(g => g.Tarifa4)
-                .Include(g => g.Tarifa5)
-                .Include(g => g.Tarifa6)
+                //.Include(g => g.Tarifa2)
+                //.Include(g => g.Tarifa3)
+                //.Include(g => g.Tarifa4)
+                //.Include(g => g.Tarifa5)
+                //.Include(g => g.Tarifa6)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (gestionReserva == null)
             {
