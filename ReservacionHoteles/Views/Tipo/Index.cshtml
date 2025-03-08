@@ -4,10 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Lista de Tipos de Disponilidad</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-create">Crear Nuevo Tipo</a>
 </p>
 <table class="table">
     <thead>
@@ -31,11 +31,65 @@
                 @Html.DisplayFor(modelItem => item.FechaRegistro)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-edit">Editar</a> 
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-detail">Detalles</a> 
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-delete">Eliminar</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+<style>
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 5px;
+        font-size: 1rem;
+        font-weight: bold;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        color: white;
+        transition: background 0.3s ease;
+    }
+
+    .btn-create {
+        background-color: cornflowerblue;
+    }
+
+        .btn-create:hover {
+            background-color: cornflowerblue;
+        }
+
+    .btn-edit {
+        background-color: #3498db;
+    }
+
+        .btn-edit:hover {
+            background-color: #2980b9;
+        }
+
+
+    .btn-delete {
+        background-color: #e74c3c;
+    }
+
+        .btn-delete:hover {
+            background-color: #c0392b;
+        }
+
+    .btn-detail {
+        background-color: #2ecc71;
+    }
+
+        .btn-detail:hover {
+            background-color: #27ae60;
+        }
+
+    .button-container {
+        display: flex;
+        gap: 10px;
+    }
+
+</style>
