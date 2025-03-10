@@ -4,14 +4,11 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-
-
+<h1>Crear</h1>
 
     <div class="card">
         <div class="card-header">
-            <b>Gestionar Reserva</b>
+            <b>Gestionar Reservas</b>
         </div>
         <div class="card-body">
               <form asp-action="Create">
@@ -40,13 +37,11 @@
                  <div class="form-row">
                      <div class="form-group col-md-6">
                         <label asp-for="HabitacionesRefId" class="control-label"></label>
-                        <input asp-for="HabitacionesRefId" class="form-control" />
+                        <select asp-for="HabitacionesRefId" class="form-control" asp-items="ViewBag.HabitacionesReId"></select>
                         <span asp-validation-for="HabitacionesRefId" class="text-danger"></span>
                     </div>
                 </div>
-                <div class="row justify-content-md-center p-2 m-2">
-                    Tarifas
-                </div>
+       
                  <div class="form-group col-md-6">
                     <label asp-for="Tarifa1RefId" class="control-label"></label>
                     <select asp-for="Tarifa1RefId" class ="form-control" asp-items="ViewBag.Tarifa1RefId"></select>
@@ -58,9 +53,9 @@
                     <span asp-validation-for="FechaRegistro" class="text-danger"></span>
                 </div>
               
-                <div class="card-footer row justify-content-md-center">
-                    &nbsp;<input type="submit" value="Create" class="btn btn-primary" />&nbsp;
-                    &nbsp;<a class="btn btn-info" asp-action="Index">Volver</a>&nbsp;
+                <div>
+                    <input type="submit" value="Crear" class="btn btn-create" />
+                    <a class="btn btn-info" asp-action="Index" class="btn btn-back">Volver</a>
                 </div>
    
               </form>
@@ -68,10 +63,38 @@
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+<style>
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 5px;
+        font-size: 1rem;
+        font-weight: bold;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        color: white;
+        transition: background 0.3s ease;
+    }
+
+    .btn-create {
+        background-color: cornflowerblue;
+    }
+
+        .btn-create:hover {
+            background-color: cornflowerblue;
+        }
+
+    .btn-back {
+        background-color: darksalmon;
+    }
+
+        .btn-back:hover {
+            background-color: burlywood;
+        }
+</style>

@@ -57,7 +57,7 @@ namespace ReservacionHoteles.Controllers
         public IActionResult Create()
         {
             ViewData["DestinosRefId"] = new SelectList(_context.Destinos, "Id", "Descripcion");
-            ViewData["HabitacionesRefId"] = new SelectList(_context.Habitaciones, "Id", "NumeroHabitaciones");
+            ViewData["HabitacionesRefId"] = new SelectList(_context.Habitaciones, "Id", "NumHabitaciones", "NumPersonas");
             ViewData["HotelRefId"] = new SelectList(_context.Hotel, "Id", "Nombre");
             ViewData["Tarifa1RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion");
             //ViewData["Tarifa2RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion");
@@ -81,8 +81,15 @@ namespace ReservacionHoteles.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            var habitaciones = await _context.Habitaciones
+                .Select(h => new
+                {
+                      ID = h.Id,
+                      Descripcion = $"Habitación {h.NumHabitaciones} - {h.NumPersonas} personas"
+                  })
+                 .ToListAsync();
             ViewData["DestinosRefId"] = new SelectList(_context.Destinos, "Id", "Descripcion", gestionReserva.DestinosRefId);
-            ViewData["HabitacionesRefId"] = new SelectList(_context.Habitaciones, "Id", "NumeroHabitaciones", gestionReserva.DestinosRefId);
+            ViewData["HabitacionesRefId"] = new SelectList(_context.Habitaciones, "ID", "Descripcion", gestionReserva.HabitacionesRefId);
             ViewData["HotelRefId"] = new SelectList(_context.Hotel, "Id", "Nombre", gestionReserva.HotelRefId);
             ViewData["Tarifa1RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa1RefId);
             //ViewData["Tarifa2RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa2RefId);
@@ -107,7 +114,7 @@ namespace ReservacionHoteles.Controllers
                 return NotFound();
             }
             ViewData["DestinosRefId"] = new SelectList(_context.Destinos, "Id", "Descripcion", gestionReserva.DestinosRefId);
-            ViewData["HabitacionesRefId"] = new SelectList(_context.Habitaciones, "Id", "NumeroHabitaciones", gestionReserva.DestinosRefId);
+            ViewData["HabitacionesRefId"] = new SelectList(_context.Habitaciones, "Id", "NumHabitaciones", gestionReserva.DestinosRefId);
             ViewData["HotelRefId"] = new SelectList(_context.Hotel, "Id", "Nombre", gestionReserva.HotelRefId);
             ViewData["Tarifa1RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa1RefId);
             //ViewData["Tarifa2RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa2RefId);
@@ -151,7 +158,7 @@ namespace ReservacionHoteles.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["DestinosRefId"] = new SelectList(_context.Destinos, "Id", "Descripcion", gestionReserva.DestinosRefId);
-            ViewData["HabitacionesRefId"] = new SelectList(_context.Habitaciones, "Id", "NumeroHabitaciones", gestionReserva.DestinosRefId);
+            ViewData["HabitacionesRefId"] = new SelectList(_context.Habitaciones, "Id", "NumHabitaciones", gestionReserva.DestinosRefId);
             ViewData["HotelRefId"] = new SelectList(_context.Hotel, "Id", "Nombre", gestionReserva.HotelRefId);
             ViewData["Tarifa1RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa1RefId);
             //ViewData["Tarifa2RefId"] = new SelectList(_context.Tarifa, "Id", "Descripcion", gestionReserva.Tarifa2RefId);
